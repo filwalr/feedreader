@@ -23,7 +23,7 @@
       <ion-content>
         <div class="list">
           <a class="item item-avatar-left"
-          href="{{story.url}}" target="_blank"class="item" ng-repeat="story in stories">
+          href="{{story.url}}" target="_blank"class="item" ng-repeat="story in stories track by story.id" >
             <img ng-src="{{story.thumbnail}}"
               ng-if="story.thumbnail.startsWith('http')">
             <h2 class="story-title">{{story.title}}</h2>
@@ -33,6 +33,7 @@
             </p>
           </a>
         </div>
+        <ion-infinite-scroll on infinite="loadOlder()" distance="1%"></ion-infinite-scroll>
       </ion-content>
     </ion-pane>
   </body>

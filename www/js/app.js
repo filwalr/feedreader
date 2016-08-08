@@ -7,17 +7,19 @@ app.controller('FeedCtrl', function($http, $scope) {
 
   $scope.stories = [];
 
-  $scope.message = {
-   text: 'hello world!',
-   time: new Date()
-  };
-
-  $http.get('https://www.reddit.com/.json')
+  $scope.loadOlderstories = function(){
+    var params ={};
+    if ($scope.stories.length > 0) {
+      params['after'] = $scope.stories[$scope.stories.length -1].name;
+    }
+    $http.get('https://www.reddit.com/.json'), {params: params}
     .success(function(response) {
       angular.forEach(response.data.children, function(child) {
         $scope.stories.push(child.data);
       });
+      $scope.$broadcast('scroll.infiniteScrollComplete');
     });
+  };
 
 
 
