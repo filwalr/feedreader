@@ -24,8 +24,8 @@
           href="{{story.url}}" target="_blank"class="item" ng-repeat="story in stories">
             <img ng-src="{{story.thumbnail}}"
               ng-if="story.thumbnail.startsWith('http')">
-            <h2>Stories: {{story.title}}</h2>
-            <p>{{story.domain}}</p>
+            <h2 class="story-title">{{story.title}}</h2>
+            <p>{{story.created_utc}} - {{story.domain}}</p>
           </a>
         </div>
       </ion-content>
