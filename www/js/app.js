@@ -2,19 +2,16 @@
 
 var app = angular.module('feedreader', ['ionic']);
 
-app.controller('FeedCtrl', function($scope) {
+app.controller('FeedCtrl', function($http, $scope) {
 
-  $scope.stories = [
-    {
-      title:'First Story'
-    },
-    {
-      title:'Second Story'
-    },
-    {
-      title:'Third Story'
-    }
-  ];
+  $scope.stories = [];
+
+  $http.get('https://www.reddit.com/r/bengals/new/.json')
+    .success(function(response) {
+      angular.forEach(response.data.children, function(child) {
+        $scope.stories.push(child.data);
+      });
+    });
 
 });
 
