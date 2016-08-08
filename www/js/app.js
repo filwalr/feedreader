@@ -6,7 +6,7 @@ app.controller('FeedCtrl', function($http, $scope) {
 
   $scope.stories = [];
 
-  $http.get('https://www.reddit.com/r/bengals/new/.json')
+  $http.get('https://www.reddit.com/.json')
     .success(function(response) {
       angular.forEach(response.data.children, function(child) {
         $scope.stories.push(child.data);

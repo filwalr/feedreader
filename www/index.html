@@ -15,14 +15,16 @@
   <body ng-app="feedreader" ng-controller="FeedCtrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <ion-header-bar class="bar-positive">
         <h1 class="title">Phil's Feed Reader</h1>
       </ion-header-bar>
       <ion-content>
-      <div ng-repeat="story in stories">
-        Stories: {{story.title}}
-      </div>
-
+        <div class="list">
+          <a href="{{story.url}}" target="_blank"class="item" ng-repeat="story in stories">
+            <h2>Stories: {{story.title}}</h2>
+            <p>{{story.domain}}</p>
+          </a>
+        </div>
       </ion-content>
     </ion-pane>
   </body>
