@@ -2,9 +2,15 @@
 
 var app = angular.module('feedreader', ['ionic']);
 
+
 app.controller('FeedCtrl', function($http, $scope) {
 
   $scope.stories = [];
+
+  $scope.message = {
+   text: 'hello world!',
+   time: new Date()
+  };
 
   $http.get('https://www.reddit.com/.json')
     .success(function(response) {
@@ -12,6 +18,8 @@ app.controller('FeedCtrl', function($http, $scope) {
         $scope.stories.push(child.data);
       });
     });
+
+
 
 });
 
